@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+welcome
+{% endblock %}
+{% block content %}
+<style>
+    body{
+        background-color: cyan;
+    }
+</style>
+<div class="container">
+<h1>welcome {{myname}}</h1>
+<div class="row">
+{% for i in product_list %}
+<div class="col-md-4">
+{{i.title}}
+<img src="{{i.image.url}}" width="200px">
+    <p>Price:<strike>Rs.{{i.marked_price}}</strike>Rs. {{i.selling_price}}</p>
+<a href="{% url 'addtocart' i.id %}" class="btn btn-primary">Add To Cart</a>
+    <button><a href="/4/{{i.id}}" class="btn btn danger btn-sm">Delete</a></button>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
